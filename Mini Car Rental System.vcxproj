@@ -139,7 +139,20 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Car.cpp" />
+    <ClCompile Include="IModelData.cpp" />
     <ClCompile Include="Mini Car Rental System.cpp" />
+    <ClCompile Include="Rental.cpp" />
+    <ClCompile Include="StringToEnumConvert.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Car.h" />
+    <ClInclude Include="CarStatus.h" />
+    <ClInclude Include="CarType.h" />
+    <ClInclude Include="IModelData.h" />
+    <ClInclude Include="Rental.h" />
+    <ClInclude Include="RentalStatus.h" />
+    <ClInclude Include="StringToEnumConvert.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
