@@ -139,26 +139,42 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Car.cpp" />
+    <ClCompile Include="ACarCreator.cpp" />
+    <ClCompile Include="ACar.cpp" />
+    <ClCompile Include="AppFacade.cpp" />
+    <ClCompile Include="CarCreatorDispatcher.cpp" />
     <ClCompile Include="HatchbackCar.cpp" />
+    <ClCompile Include="HatchbackCarCreator.cpp" />
     <ClCompile Include="Mini Car Rental System.cpp" />
     <ClCompile Include="Constants.cpp" />
     <ClCompile Include="Rental.cpp" />
     <ClCompile Include="SedanCar.cpp" />
+    <ClCompile Include="SedanCarCreator.cpp" />
     <ClCompile Include="StringToEnumConvert.cpp" />
     <ClCompile Include="SuvCar.cpp" />
+    <ClCompile Include="SuvCarCreator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ACar.h" />
+    <ClInclude Include="ACarCreator.h" />
+    <ClInclude Include="AppFacade.h" />
+    <ClInclude Include="CarCreatorDispatcher.h" />
     <ClInclude Include="CarStatus.h" />
     <ClInclude Include="CarType.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="HatchbackCar.h" />
+    <ClInclude Include="HatchbackCarCreator.h" />
     <ClInclude Include="Rental.h" />
     <ClInclude Include="RentalStatus.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="SedanCar.h" />
+    <ClInclude Include="SedanCarCreator.h" />
     <ClInclude Include="StringToEnumConvert.h" />
     <ClInclude Include="SuvCar.h" />
+    <ClInclude Include="SuvCarCreator.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Mini Car Rental System.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

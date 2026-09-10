@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
+#include <vector>
 #include "RentalStatus.h"
+class ACar;
 class Rental
 {
 private:
@@ -17,5 +19,7 @@ public:
 	short getNumberOfDays() const;
 	RentalStatus getStatus() const;
 	void printRentalInfo() const;
+	static bool carIdExists(short carId, const std::vector<ACar*>& cars);
 	static bool isRentalValid(short rentalId, short carId, const std::string& customerName, short numberOfDays, RentalStatus status);
+	static Rental* create(short rentalId, short carId, const std::string& customerName, short numberOfDays, RentalStatus status);
 };

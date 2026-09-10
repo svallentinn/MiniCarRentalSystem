@@ -7,7 +7,7 @@ class ACar
 protected:
 	short _id;
 	std::string _model;
-	short _pricePerDay;
+	float _pricePerDay;
 	CarStatus _status;
 public:
 	ACar(short id, const std::string& model, float pricePerDay, CarStatus status);

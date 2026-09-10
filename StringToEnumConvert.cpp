@@ -1,16 +1,30 @@
 #include "StringToEnumConvert.h"
+
+std::string StringToEnumConvert::toUpperCase(const std::string& option)
+{
+	std::string result = option;
+	for (short i = 0; i < result.size(); i++)
+	{
+		if (result[i] >= 'a' && result[i] <= 'z')
+		{
+			result[i] = result[i] - 32;
+		}
+	}
+	return result;
+}
+
 CarStatus StringToEnumConvert::stringToCarStatus(const std::string& option)
 {
-	//upper case transf for options!!!
-	if (option == "AVAILABLE")
+	std::string toUpperCaseOption = StringToEnumConvert::toUpperCase(option);
+	if (toUpperCaseOption == "AVAILABLE")
 	{
 		return CarStatus::AVAILABLE;
 	}
-	else if (option == "RENTED")
+	else if (toUpperCaseOption == "RENTED")
 	{
 		return CarStatus::RENTED;
 	}
-	else if (option == "SERVICE")
+	else if (toUpperCaseOption == "SERVICE")
 	{
 		return CarStatus::SERVICE;
 	}
@@ -34,15 +48,16 @@ std::string StringToEnumConvert::carStatusToString(CarStatus status)
 
 CarType StringToEnumConvert::stringToCarType(const std::string& option)
 {
-	if (option == "HATCHBACK")
+	std::string toUpperCaseOption = StringToEnumConvert::toUpperCase(option);
+	if (toUpperCaseOption == "HATCHBACK")
 	{
 		return CarType::HATCHBACK;
 	}
-	else if (option == "SEDAN")
+	else if (toUpperCaseOption == "SEDAN")
 	{
 		return CarType::SEDAN;
 	}
-	else if (option == "SUV")
+	else if (toUpperCaseOption == "SUV")
 	{
 		return CarType::SUV;
 	}
@@ -66,15 +81,16 @@ std::string StringToEnumConvert::carTypeToString(CarType type)
 
 RentalStatus StringToEnumConvert::stringToRentalStatus(const std::string& option)
 {
-	if (option == "ACTIVE")
+	std::string toUpperCaseOption = StringToEnumConvert::toUpperCase(option);
+	if (toUpperCaseOption == "ACTIVE")
 	{
 		return RentalStatus::ACTIVE;
 	}
-	else if (option == "CANCELLED")
+	else if (toUpperCaseOption == "CANCELLED")
 	{
 		return RentalStatus::CANCELLED;
 	}
-	else if (option == "COMPLETED")
+	else if (toUpperCaseOption == "COMPLETED")
 	{
 		return RentalStatus::COMPLETED;
 	}

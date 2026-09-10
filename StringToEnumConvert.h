@@ -6,11 +6,12 @@
 class StringToEnumConvert
 {
 public:
-	CarStatus stringToCarStatus(const std::string& option);
+	static std::string toUpperCase(const std::string& option);
+	static CarStatus stringToCarStatus(const std::string& option);
 	std::string carStatusToString(CarStatus status);
-	CarType stringToCarType(const std::string& option);
+	static CarType stringToCarType(const std::string& option);
 	std::string carTypeToString(CarType type);
-	RentalStatus stringToRentalStatus(const std::string& option);
+	static RentalStatus stringToRentalStatus(const std::string& option);
 	std::string rentalStatusToString(RentalStatus rentalStatus);
 };
 
