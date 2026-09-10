@@ -7,9 +7,9 @@ class StringToEnumConvert
 {
 public:
 	CarStatus stringToCarStatus(const std::string& option);
-	std::string CarStatusToString(CarStatus status);
+	std::string carStatusToString(CarStatus status);
 	CarType stringToCarType(const std::string& option);
-	std::string CarTypetoString(CarType type);
+	std::string carTypeToString(CarType type);
 	RentalStatus stringToRentalStatus(const std::string& option);
 	std::string rentalStatusToString(RentalStatus rentalStatus);
 };

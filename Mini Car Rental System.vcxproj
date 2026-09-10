@@ -140,19 +140,25 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Car.cpp" />
-    <ClCompile Include="IModelData.cpp" />
+    <ClCompile Include="HatchbackCar.cpp" />
     <ClCompile Include="Mini Car Rental System.cpp" />
+    <ClCompile Include="Constants.cpp" />
     <ClCompile Include="Rental.cpp" />
+    <ClCompile Include="SedanCar.cpp" />
     <ClCompile Include="StringToEnumConvert.cpp" />
+    <ClCompile Include="SuvCar.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Car.h" />
+    <ClInclude Include="ACar.h" />
     <ClInclude Include="CarStatus.h" />
     <ClInclude Include="CarType.h" />
-    <ClInclude Include="IModelData.h" />
+    <ClInclude Include="Constants.h" />
+    <ClInclude Include="HatchbackCar.h" />
     <ClInclude Include="Rental.h" />
     <ClInclude Include="RentalStatus.h" />
+    <ClInclude Include="SedanCar.h" />
     <ClInclude Include="StringToEnumConvert.h" />
+    <ClInclude Include="SuvCar.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

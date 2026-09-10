@@ -16,7 +16,7 @@ CarStatus StringToEnumConvert::stringToCarStatus(const std::string& option)
 	}
 }
 
-std::string StringToEnumConvert::CarStatusToString(CarStatus status)
+std::string StringToEnumConvert::carStatusToString(CarStatus status)
 {
 	if (status==CarStatus::AVAILABLE)
 	{
@@ -48,7 +48,7 @@ CarType StringToEnumConvert::stringToCarType(const std::string& option)
 	}
 }
 
-std::string StringToEnumConvert::CarTypetoString(CarType type)
+std::string StringToEnumConvert::carTypeToString(CarType type)
 {
 	if (type== CarType::HATCHBACK)
 	{

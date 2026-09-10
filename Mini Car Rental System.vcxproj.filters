@@ -21,13 +21,22 @@
     <ClCompile Include="StringToEnumConvert.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="IModelData.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Car.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Rental.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Constants.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SedanCar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SuvCar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HatchbackCar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -44,13 +53,22 @@
     <ClInclude Include="RentalStatus.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IModelData.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Car.h">
+    <ClInclude Include="ACar.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Rental.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SedanCar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SuvCar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HatchbackCar.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
