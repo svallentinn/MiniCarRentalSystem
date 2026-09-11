@@ -13,7 +13,7 @@ short ACar::getId() const
 	return _id;
 }
 
-const std::string& ACar::getTypeString() const
+const std::string& ACar::getModel() const
 {
 	return _model;
 }

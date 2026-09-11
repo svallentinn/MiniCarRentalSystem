@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 #include "RentalStatus.h"
-class ACar;
+#include "ACar.h"
 class Rental
 {
 private:
@@ -11,8 +11,8 @@ private:
 	std::string _customerName;
 	short _numberOfDays;
 	RentalStatus _status;
-public:
 	Rental(short rentalId, short carId, const std::string& customerName, short numberOfDays, RentalStatus status);
+public:	
 	short getRentalId() const;
 	short getCarID() const;
 	const std::string& getCustomerName() const;

@@ -1,8 +1,6 @@
 #include<iostream>
-#include "Rental.h"
 #include "Constants.h"
 #include "StringToEnumConvert.h"
-#include "ACar.h"
 
 Rental::Rental(short rentalId, short carId, const std::string& customerName, short numberOfDays,
 	RentalStatus status): _rentalId{rentalId}, _carId{carId}, _customerName{customerName}, 
@@ -66,6 +64,10 @@ bool Rental::isRentalValid(short rentalId, short carId, const std::string& custo
 		return false;
 	}
 	if (numberOfDays <= 0)
+	{
+		return false;
+	}
+	if (!carIdExists(carID, cars))
 	{
 		return false;
 	}

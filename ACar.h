@@ -13,7 +13,7 @@ public:
 	ACar(short id, const std::string& model, float pricePerDay, CarStatus status);
 	virtual ~ACar() = 0;
 	short getId() const;
-	const std::string& getTypeString() const;
+	const std::string& getModel() const;
 	float getPricePerDay() const;
 	CarStatus getStatus() const;
 	virtual CarType getType() const = 0;
