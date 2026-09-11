@@ -95,7 +95,7 @@ void AppFacade::appCreateRental()
 	std::cout << std::endl << "Enter number of days: " << std::endl;
 	std::cin >> numberOfDays;
 	RentalStatus status = readRentalStatus();
-	Rental* rental = Rental::create(rentalId, carId, customerName, numberOfDays, status );
+	Rental* rental = Rental::create(rentalId, carId, customerName, numberOfDays, status, _cars );
 	if (rental != nullptr)
 	{
 		_rentals.push_back(rental);

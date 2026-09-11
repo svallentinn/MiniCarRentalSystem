@@ -29,12 +29,11 @@ CarStatus ACar::getStatus() const
 }
 
 void ACar::printInfo() const
-{
-	StringToEnumConvert converter;
+{	
 	std::cout << "Car " << Constants::PIPE_DELIMITER << " " << _model << " " << Constants::PIPE_DELIMITER <<
-		converter.carTypeToString(getType()) << " " << Constants::PIPE_DELIMITER << " " << _pricePerDay << " "
+		StringToEnumConvert::carTypeToString(getType()) << " " << Constants::PIPE_DELIMITER << " " << _pricePerDay << " "
 		<< Constants::RON_CURRENCY<< "/" << Constants::DAY << " " << Constants::PIPE_DELIMITER << " " 
-		<< converter.carStatusToString(_status) << std::endl;	
+		<< StringToEnumConvert::carStatusToString(_status) << std::endl;
 }
 
 bool ACar::isValid(short id, const std::string& model, float pricePerDay)
