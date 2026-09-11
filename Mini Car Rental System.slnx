@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="Mini Car Rental System.vcxproj" />
+  <Project Path="Mini Car Rental System.vcxproj" Id="fb16654f-065d-4ac3-a235-3b82ab0d7609" />
 </Solution>
