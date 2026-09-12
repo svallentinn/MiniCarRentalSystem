@@ -4,6 +4,8 @@
 #include "StringToEnumConvert.h"
 #include "ACar.h"
 #include "CarCreatorDispatcher.h"
+#include "FileAdapter.h"
+#include "Constants.h"
 CarType AppFacade::readCarType() const
 {
 	std::string option;
@@ -113,7 +115,8 @@ void AppFacade::appStart()
 	do
 	{
 		std::cout << std::endl << "MINI CAR RENTAL SYSTEM" << std::endl << "1. Create Car" << std::endl <<
-			"2. Create Rental" << std::endl << "3. Exit" << std::endl << "Choose an option:" << std::endl;
+			"2. Create Rental" << std::endl << "3. Import data from file" << std::endl <<
+			"4. Exit" << std::endl << "Choose an option:" << std::endl;
 		std::cin >> option;
 		if (option == 1)
 		{
@@ -122,8 +125,12 @@ void AppFacade::appStart()
 		else if (option == 2)
 		{
 			appCreateRental();
-		}
+		}		
 		else if (option == 3)
+		{
+			appFileImport();
+		}
+		else if (option == 4)
 		{
 			std::cout << std::endl << "Exiting!";
 		}
@@ -131,7 +138,48 @@ void AppFacade::appStart()
 		{
 			std::cout << std::endl << "Invalid option." << std::endl;
 		}
-	} while (option != 3);
+	} while (option != 4);
+}
+
+void AppFacade::appFileImport()
+{
+	std::cin.ignore(1, '\n');
+	std::cout << std::endl << "Enter file path(empty for default " << Constants::DEFAULT_DATA_FILE << " ):" << std::endl;
+	std::string filePath;
+	std::getline(std::cin, filePath);
+	if (filePath.empty())
+	{
+		filePath = Constants::DEFAULT_DATA_FILE;
+	}
+	FileAdapter fileSource(filePath, _cars);//de verificat adapter
+	if (!fileSource.isReady())
+	{
+		std::cout << std::endl << "The file could not be opened." << std::endl;
+		return;
+	}
+	short carsLoaded = 0;
+	short validRentals = 0;
+	short invalidLines = 0;
+	while (fileSource.hasNext())
+	{
+		ParsedLine result = fileSource.readNext();
+		if (result._kind==FileLineKind::CAR)
+		{
+			_cars.push_back(result._car);
+			carsLoaded++;
+		}
+		else if (result._kind == FileLineKind::RENTAL)
+		{
+			_rentals.push_back(result._rental);
+			validRentals++;
+		}
+		else if (result._kind == FileLineKind::INVALID)
+		{
+			invalidLines++;
+		}
+	}
+	std::cout << std::endl << "Cars Loaded " << carsLoaded << std::endl << "Rentals Loaded " << validRentals << std::endl
+		<< "Invalid Lines " << invalidLines << std::endl;
 }
 
 AppFacade::~AppFacade()

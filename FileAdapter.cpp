@@ -6,7 +6,7 @@
 #include "CarCreatorDispatcher.h"
 void FileAdapter::nextLine()
 {
-	_hasCurrentLine = _reader.getNextLine(_currentLine);
+	_hasNextLine = _reader.getNextLine(_currentLine);
 }
 std::vector<std::string> FileAdapter::splitFields(const std::string& line)
 {
@@ -26,6 +26,7 @@ std::vector<std::string> FileAdapter::splitFields(const std::string& line)
 		}
 	}
 	fields.push_back(currentField);
+	return fields;
 }
 
 ParsedLine FileAdapter::parseCarLine(const std::vector<std::string>& fields)
@@ -47,6 +48,13 @@ ParsedLine FileAdapter::parseCarLine(const std::vector<std::string>& fields)
 	{
 		return result;
 	}
+	std::string upperStatus = StringToEnumConvert::toUpperCase(fields[5]);
+	if(upperStatus!= StringToEnumConvert::carStatusToString(CarStatus::AVAILABLE)&&
+		upperStatus != StringToEnumConvert::carStatusToString(CarStatus::RENTED) &&
+		upperStatus != StringToEnumConvert::carStatusToString(CarStatus::SERVICE))
+	{
+		return result;
+	}	
 	CarStatus status = StringToEnumConvert::stringToCarStatus(fields[5]);
 	ACarCreator* creator = CarCreatorDispatcher::getCreator(type);
 	if (creator == nullptr)
@@ -63,27 +71,75 @@ ParsedLine FileAdapter::parseCarLine(const std::vector<std::string>& fields)
 	return result;
 }
 
-ParsedLine FileAdapter::parseRentalLine(const std::vector<std::string>& fields)
+ParsedLine FileAdapter::parseRentalLine(const std::vector<std::string>& fields, const std::vector<ACar*>& cars)
 {
-
+	ParsedLine result;
+	if (fields.size() != 6)
+	{
+		return result;
+	}
+	short rentalId;
+	if (!ParseStringToNumber::isConvertedToShort(fields[1], rentalId))
+	{
+		return result;
+	}
+	short carId;
+	if (!ParseStringToNumber::isConvertedToShort(fields[1], carId))
+	{
+		return result;
+	}
+	const std::string& customerName = fields[3];
+	short numerOfDays;
+	if (!ParseStringToNumber::isConvertedToShort(fields[4], numerOfDays))
+	{
+		return result;
+	}
+	std::string upperStatus = StringToEnumConvert::toUpperCase(fields[5]);
+	if (upperStatus != StringToEnumConvert::rentalStatusToString(RentalStatus::ACTIVE)&& 
+		upperStatus != StringToEnumConvert::rentalStatusToString(RentalStatus::CANCELLED)&&
+		upperStatus != StringToEnumConvert::rentalStatusToString(RentalStatus::COMPLETED))
+	{
+		return result;
+	}
+	RentalStatus status = StringToEnumConvert::stringToRentalStatus(fields[5]);
+	Rental* rental = Rental::create(rentalId, carId, customerName, numerOfDays, status, cars);
+	if (rental == nullptr)
+	{
+		return result;
+	}
+	result._kind = FileLineKind::RENTAL;
+	result._rental = rental;
+	return result;
 }
 
-FileAdapter::FileAdapter(const std::string& filePath) :_reader(filePath), _currentLine(), _hasCurrentLine(false)
+FileAdapter::FileAdapter(const std::string& filePath, const std::vector<ACar*>& cars) :_reader(filePath), 
+			_currentLine(), _hasNextLine(false), _cars(cars)
 {
 	nextLine();
 }
 
-bool isReady() const
+bool FileAdapter::isReady() const
 {
-
+	return _reader.isOpen();
 }
 
-bool hasNext() const
+bool FileAdapter::hasNext() const
 {
-
+	return _hasNextLine;
 }
 
-ParsedLine readNext()
+ParsedLine FileAdapter::readNext()
 {
-
+	std::string line = _currentLine;
+	nextLine();
+	std::vector<std::string> fields = splitFields(line);
+	if (fields[0] == StringToEnumConvert::fileLineKindToString(FileLineKind::CAR))
+	{
+		return parseCarLine(fields);
+	}
+	if (fields[0] == StringToEnumConvert::fileLineKindToString(FileLineKind::RENTAL))
+	{
+		return parseRentalLine(fields, _cars);
+	}
+	return ParsedLine{};
 }

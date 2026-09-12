@@ -3,6 +3,7 @@
 #include "CarStatus.h"
 #include "CarType.h"
 #include "RentalStatus.h"
+#include "FileLineKind.h"
 class StringToEnumConvert
 {
 public:
@@ -13,5 +14,6 @@ public:
 	static std::string carTypeToString(CarType type);
 	static RentalStatus stringToRentalStatus(const std::string& option);
 	static std::string rentalStatusToString(RentalStatus rentalStatus);
+	static std::string fileLineKindToString(FileLineKind kind);
 };
 

@@ -14,7 +14,7 @@ private:
 	Rental(short rentalId, short carId, const std::string& customerName, short numberOfDays, RentalStatus status);
 public:	
 	short getRentalId() const;
-	short getCarID() const;
+	short getCarId() const;
 	const std::string& getCustomerName() const;
 	short getNumberOfDays() const;
 	RentalStatus getStatus() const;

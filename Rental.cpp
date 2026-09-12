@@ -12,7 +12,7 @@ short Rental::getRentalId() const
 	return _rentalId;
 }
 
-short Rental::getCarID() const
+short Rental::getCarId() const
 {
 	return _carId;
 }
