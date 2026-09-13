@@ -15,6 +15,7 @@ private:
 	RentalStatus readRentalStatus() const;
 	void appCreateCar();
 	void appCreateRental();
+	void appImportFile();
 public:
 	void appStart();
 	~AppFacade();

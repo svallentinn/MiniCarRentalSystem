@@ -1,4 +1,5 @@
 #include<iostream>
+#include "Rental.h"
 #include "Constants.h"
 #include "StringToEnumConvert.h"
 
@@ -11,7 +12,7 @@ short Rental::getRentalId() const
 	return _rentalId;
 }
 
-short Rental::getCarID() const
+short Rental::getCarId() const
 {
 	return _carId;
 }
@@ -32,11 +33,10 @@ RentalStatus Rental::getStatus() const
 }
 
 void Rental::printRentalInfo() const
-{
-	StringToEnumConvert converter;
+{	
 	std::cout << "Rental " << _rentalId << " " << Constants::PIPE_DELIMITER << " " << _carId << " " << Constants::PIPE_DELIMITER <<
 		" " << _customerName << " " << Constants::PIPE_DELIMITER << " " << _numberOfDays << " " << Constants::DAY << " " <<
-		Constants::PIPE_DELIMITER << " " << converter.rentalStatusToString(_status) << std::endl;
+		Constants::PIPE_DELIMITER << " " << StringToEnumConvert::rentalStatusToString(_status) << std::endl;
 }
 bool Rental::carIdExists(short carId, const std::vector<ACar*>& cars)
 {
@@ -49,7 +49,7 @@ bool Rental::carIdExists(short carId, const std::vector<ACar*>& cars)
 	}
 	return false;
 }
-bool Rental::isRentalValid(short rentalId, short carId, const std::string& customerName, short numberOfDays, RentalStatus status)
+bool Rental::isRentalValid(short rentalId, short carId, const std::string& customerName, short numberOfDays, RentalStatus status, const std::vector<ACar*>& cars)
 {
 	if (rentalId <= 0)
 	{
@@ -67,15 +67,15 @@ bool Rental::isRentalValid(short rentalId, short carId, const std::string& custo
 	{
 		return false;
 	}
-	if (!carIdExists(carID, cars))
+	if (!carIdExists(carId, cars))
 	{
 		return false;
 	}
 	return true;
 }
-Rental* Rental::create(short rentalId, short carId, const std::string& customerName, short numberOfDays, RentalStatus status)
+Rental* Rental::create(short rentalId, short carId, const std::string& customerName, short numberOfDays, RentalStatus status, const std::vector<ACar*>& cars)
 {
-	if (!isRentalValid(rentalId, carId, customerName, numberOfDays, status))
+	if (!isRentalValid(rentalId, carId, customerName, numberOfDays, status, cars))
 	{
 		return nullptr;
 	}

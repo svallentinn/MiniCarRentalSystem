@@ -111,3 +111,19 @@ std::string StringToEnumConvert::rentalStatusToString(RentalStatus rentalStatus)
 		return "COMPLETED";
 	}
 }
+
+std::string StringToEnumConvert::fileLineKindToString(FileLineKind kind)
+{
+	if (kind == FileLineKind::CAR)
+	{
+		return "CAR";
+	}
+	if (kind == FileLineKind::INVALID)
+	{
+		return "INVALID";
+	}
+	if (kind == FileLineKind::RENTAL)
+	{
+		return "RENTAL";
+	}
+}
