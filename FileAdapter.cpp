@@ -4,7 +4,7 @@
 #include "StringToEnumConvert.h"
 #include "ACarCreator.h"
 #include "CarCreatorDispatcher.h"
-void FileAdapter::nextLine()
+void FileAdapter::readNextLine()
 {
 	_hasNextLine = _reader.getNextLine(_currentLine);
 }
@@ -36,7 +36,7 @@ ParsedLine FileAdapter::parseCarLine(const std::vector<std::string>& fields)
 	{
 		return result;
 	}
-	short id;
+	short id=0;
 	if (!ParseStringToNumber::isConvertedToShort(fields[1], id))
 	{
 		return result;
@@ -78,13 +78,13 @@ ParsedLine FileAdapter::parseRentalLine(const std::vector<std::string>& fields, 
 	{
 		return result;
 	}
-	short rentalId;
+	short rentalId=0;
 	if (!ParseStringToNumber::isConvertedToShort(fields[1], rentalId))
 	{
 		return result;
 	}
-	short carId;
-	if (!ParseStringToNumber::isConvertedToShort(fields[1], carId))
+	short carId=0;
+	if (!ParseStringToNumber::isConvertedToShort(fields[2], carId))
 	{
 		return result;
 	}
@@ -115,7 +115,7 @@ ParsedLine FileAdapter::parseRentalLine(const std::vector<std::string>& fields, 
 FileAdapter::FileAdapter(const std::string& filePath, const std::vector<ACar*>& cars) :_reader(filePath), 
 			_currentLine(), _hasNextLine(false), _cars(cars)
 {
-	nextLine();
+	readNextLine();
 }
 
 bool FileAdapter::isReady() const
@@ -131,7 +131,7 @@ bool FileAdapter::hasNext() const
 ParsedLine FileAdapter::readNext()
 {
 	std::string line = _currentLine;
-	nextLine();
+	readNextLine();
 	std::vector<std::string> fields = splitFields(line);
 	if (fields[0] == StringToEnumConvert::fileLineKindToString(FileLineKind::CAR))
 	{

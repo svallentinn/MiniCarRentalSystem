@@ -17,6 +17,7 @@ bool ParseStringToNumber::isConvertedToShort(const std::string& text, short& out
 	{
 		return false;
 	}
+	outputValue = 0;
 	for (; index < text.size(); index++)
 	{
 		char ch = text[index];

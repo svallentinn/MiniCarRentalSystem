@@ -11,7 +11,7 @@ private:
 	std::string _currentLine;
 	bool _hasNextLine;
 	const std::vector<ACar*>& _cars;
-	void nextLine();
+	void readNextLine();
 	static std::vector<std::string> splitFields(const std::string& line);
 	static ParsedLine parseCarLine(const std::vector<std::string>& fields);
 	static ParsedLine parseRentalLine(const std::vector<std::string>& fields, const std::vector<ACar*>& cars);

@@ -53,9 +53,9 @@ RentalStatus AppFacade::readRentalStatus() const
 }
 void AppFacade::appCreateCar()
 {
-	short id;
+	short id=0;
 	std::string model;
-	float pricePerDay;
+	float pricePerDay = 0;
 	std::cout << std::endl << "Enter car id: " << std::endl;
 	std::cin >> id;
 	std::cout << std::endl << " Enter car model: " << std::endl;
@@ -84,10 +84,10 @@ void AppFacade::appCreateCar()
 }
 void AppFacade::appCreateRental()
 {
-	short rentalId;
-	short carId;
+	short rentalId=0;
+	short carId=0;
 	std::string customerName;
-	short numberOfDays;
+	short numberOfDays=0;
 	std::cout << std::endl << "Enter Rental id: " << std::endl;
 	std::cin >> rentalId;
 	std::cout << std::endl << "Enter car id: " << std::endl;
@@ -111,7 +111,7 @@ void AppFacade::appCreateRental()
 }
 void AppFacade::appStart()
 {
-	short option;
+	short option=0;
 	do
 	{
 		std::cout << std::endl << "MINI CAR RENTAL SYSTEM" << std::endl << "1. Create Car" << std::endl <<
@@ -128,7 +128,7 @@ void AppFacade::appStart()
 		}		
 		else if (option == 3)
 		{
-			appFileImport();
+			appImportFile();
 		}
 		else if (option == 4)
 		{
@@ -141,7 +141,7 @@ void AppFacade::appStart()
 	} while (option != 4);
 }
 
-void AppFacade::appFileImport()
+void AppFacade::appImportFile()
 {
 	std::cin.ignore(1, '\n');
 	std::cout << std::endl << "Enter file path(empty for default " << Constants::DEFAULT_DATA_FILE << " ):" << std::endl;
@@ -151,7 +151,7 @@ void AppFacade::appFileImport()
 	{
 		filePath = Constants::DEFAULT_DATA_FILE;
 	}
-	FileAdapter fileSource(filePath, _cars);//de verificat adapter
+	FileAdapter fileSource(filePath, _cars);
 	if (!fileSource.isReady())
 	{
 		std::cout << std::endl << "The file could not be opened." << std::endl;
